@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MeuPainelDeControle.Models.Estoque>
+
+<head>
+    <style>
+        #btn-novo{
+            margin-left: 2%;
+        }
+    </style>
+</head>
+
+<h1 class=text-center>Controle de estoque</h1>
+
+<p>
+    <a id="btn-novo" class="btn btn-primary" asp-action="Create">Novo registro</a>
+</p>
+
+<div class=text-center>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <p hidden>@Html.DisplayNameFor(model => model.IdProduto) </p> Id Produto
+                </th>
+                <th>
+                    <p hidden> @Html.DisplayNameFor(model => model.EstoqueProduto) </p> Estoque
+                </th>
+                <th>
+                    <P hidden> @Html.DisplayNameFor(model => model.TipoEmbalagem) </P> Tipo de embalagem
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdProduto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EstoqueProduto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TipoEmbalagem)
+                    </td>
+                    <td>
+                        <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Apagar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

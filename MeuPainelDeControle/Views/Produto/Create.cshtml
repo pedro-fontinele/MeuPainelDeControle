@@ -1,0 +1,68 @@
+﻿@model MeuPainelDeControle.Models.Produto
+
+@{
+    ViewData["Title"] = "Cadastro de produto";
+}
+
+<head>
+    <style>
+        .form-group {
+            margin-left: 100%;
+            margin-right: -120%;
+        }
+    </style>
+</head>
+
+<h1 class=text-center>Cadastro de produto</h1>
+
+<div class=text-center>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="DescricaoProduto" class="control-label">Descrição</label>
+                    <input asp-for="DescricaoProduto" class="form-control" />
+                    <span asp-validation-for="DescricaoProduto" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PrecoProduto" class="control-label">Preço</label>
+                    <input asp-for="PrecoProduto" class="form-control" />
+                    <span asp-validation-for="PrecoProduto" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TipoEmbalagem" class="control-label">Tipo de embalagem</label>
+                    <select asp-for="TipoEmbalagem" class="form-control">
+                        <option disabled selected value="">Escolha um tipo de embalagem</option>
+                        <option value="Unidade">Unidade</option>
+                        <option value="Caixa">Caixa</option>
+                        <option value="Pacote-Kg">Pacote-Kg</option>
+                        <option value="Pacote-Gr">Pacote-Gr</option>
+                        <option value="Lata-Kg">Lata-Kg</option>
+                        <option value="Lata-Gr">Lata-Gr</option>
+                    </select>
+                    <span asp-validation-for="TipoEmbalagem" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="QuantidadeEmbalagem" class="control-label">Quantidade embalagem</label>
+                    <input asp-for="QuantidadeEmbalagem" class="form-control" />
+                    <span asp-validation-for="QuantidadeEmbalagem" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Cadastrar" class="btn btn-success" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a class="btn btn-secondary" asp-action="Index">Volta ao catalogo</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

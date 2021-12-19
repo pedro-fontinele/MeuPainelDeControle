@@ -1,0 +1,21 @@
+﻿@model MeuPainelDeControle.Models.Produto
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class=text-center>
+    <h1>Deletar registro</h1>
+    <h5> Tem certeza que deseja deletar?</h5>
+    <div>
+    </div>
+    <hr />
+    <br />
+    <h2> @Html.DisplayFor(model => model.DescricaoProduto) R$ @Html.DisplayFor(model => model.PrecoProduto) @Html.DisplayFor(model => model.TipoEmbalagem) @Html.DisplayFor(model => model.QuantidadeEmbalagem)  </h2>
+
+    <br />
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Deletar" class="btn btn-danger" /> | <a class="btn btn-primary" asp-action="Index">Volta ao catalogo </a>
+    </form>
+</div>

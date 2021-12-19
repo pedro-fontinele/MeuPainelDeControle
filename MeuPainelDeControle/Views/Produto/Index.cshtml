@@ -1,0 +1,66 @@
+﻿@model IEnumerable<MeuPainelDeControle.Models.Produto>
+
+<head>
+    <style>
+        #btn-novo{
+            margin-left: 2%;
+        }
+    </style>
+</head>
+
+<h1 class=text-center>Catalogo de produtos</h1>
+
+<p>
+    <a id="btn-novo" class="btn btn-primary" asp-action="Create">Novo produto</a>
+</p>
+
+<div class=text-center>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <p hidden>@Html.DisplayNameFor(model => model.Id) </p> Id Produto
+                </th>
+                <th>
+                    <p hidden>@Html.DisplayNameFor(model => model.DescricaoProduto) </p> Descrição
+                </th>
+                <th>
+                    <p hidden> @Html.DisplayNameFor(model => model.PrecoProduto) </p> Preço
+                </th>
+                <th>
+                    <P hidden> @Html.DisplayNameFor(model => model.TipoEmbalagem) </P> Tipo de embalagem
+                </th>
+                <th>
+                    <p hidden> @Html.DisplayNameFor(model => model.QuantidadeEmbalagem) </p> Quantidade embalagem
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DescricaoProduto)
+                    </td>
+                    <td>
+                        R$ @Html.DisplayFor(modelItem => item.PrecoProduto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TipoEmbalagem)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.QuantidadeEmbalagem)
+                    </td>
+                    <td>
+                        <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Apagar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
